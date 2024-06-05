@@ -1,4 +1,8 @@
 class GildedRose
+  AGED_BRIE = "Aged Brie"
+  BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert"
+  SULFURAS = "Sulfuras, Hand of Ragnaros"
+
   def initialize(items)
     @items = items
   end
@@ -16,9 +20,9 @@ class GildedRose
 
   def process_item_quality
     case @item.name
-    when "Aged Brie"
+    when AGED_BRIE
       increases_proportionally_to_times
-    when "Backstage passes to a TAFKAL80ETC concert"
+    when BACKSTAGE
       increases_proportionally_to_times
     else
       update_item
@@ -26,7 +30,7 @@ class GildedRose
   end
 
   def process_item_sell_in
-    @item.sell_in -= 1 unless @item.name == "Sulfuras, Hand of Ragnaros"
+    @item.sell_in -= 1 unless @item.name == SULFURAS
   end
 
   def increases_proportionally_to_times
@@ -41,9 +45,9 @@ class GildedRose
 
   def process_expired_item
     case @item.name
-    when "Aged Brie"
+    when AGED_BRIE
       @item.quality += 1 if @item.quality < 50
-    when "Backstage passes to a TAFKAL80ETC concert"
+    when BACKSTAGE
       @item.quality = 0
     else
       update_item
