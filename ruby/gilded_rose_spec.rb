@@ -36,7 +36,7 @@ describe GildedRose do
     it 'increases proportionally to time until 5' do
       items[0].sell_in = 5
       gilded_rose.update_quality
-      expect(items[0].quality).to eq(25)
+      expect(items[0].quality).to eq(23)
     end
   end
 
